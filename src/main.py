@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 from datetime import datetime
 import multiprocessing
 
@@ -12,6 +13,7 @@ def main():
     listCombinations = manager.list()
     combinations = []
     time = [datetime.now(), datetime.now()]
+    saveFile = True;
 
     os.system("clear");
 
@@ -26,7 +28,19 @@ def main():
     print("Ending time:", datetime.now().strftime("%H:%M:%S"))
     print("Number of combinations:", len(combinations))
 
-    saveCombinations(combinations, time)
+    for arg in (sys.argv):
+        if (arg == "--dont-save"):
+            saveFile = False
+    
+    if (saveFile == True):
+        saveCombinations(combinations, time)
+
+    if (len(combinations) != 0):
+        print("\nResults [combinations = solution | (solution - cosmological constant)]:")
+        for i in range(0, len(combinations)):
+            print(combinations[i][0], "=", combinations[i][1], "|", combinations[i][1] - constants[1][0])
+    else:
+        print("\nWithout results")
 
 # This function exports the output in a ".txt" file
 def saveCombinations(combinations, time):
@@ -54,13 +68,10 @@ def saveCombinations(combinations, time):
     file.write("\nNumber of combinations: " + str(len(combinations)) + "\n")
 
     if (len(combinations) != 0):
-        print("\nResults [combinations = solution | (solution - cosmological constant)]:")
         file.write("\nResults [combinations = solution | (solution - cosmological constant)]:\n")
         for i in range(0, len(combinations)):
-            print(combinations[i][0], "=", combinations[i][1], "|", combinations[i][1] - constants[1][0])
             file.write("\t" + str(combinations[i][0]) + " = " + str(combinations[i][1]) + " | " + str(combinations[i][1] - constants[1][0]) + "\n")
     else:
-        print("\nWithout results")
         file.write("\nWithout results")
 
 if __name__ == "__main__":
