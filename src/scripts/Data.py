@@ -1,5 +1,6 @@
 from scripts import m, s, kg, C
 
+# Constants
 constants = [
     [
         # Universal constants
@@ -19,3 +20,7 @@ constants = [
 
 # Powers
 powers = [-2, -1, -0.5, 0, 0.5, 1, 2]
+
+# Length
+lengthConstants = len(constants[0])
+lengthPowers = len(powers)
