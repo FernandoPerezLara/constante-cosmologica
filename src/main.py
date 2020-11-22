@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from itertools import combinations
 import os
 from datetime import datetime
 import multiprocessing

@@ -1,5 +1,4 @@
 import multiprocessing
-import os
 
 from .Data import *
 
@@ -7,12 +6,14 @@ from .Data import *
 def distributeCombinations(listCombinations):
     processes = [None]*lengthPowers
 
+    # Create the processes required to create the joins
     for i in range(0, lengthPowers):
         processes[i] = multiprocessing.Process(target=createCombination, args=(i, listCombinations))
-        processes[i].start()
+        processes[i].start() # Begins the process
 
+    # Wait for all the processes to complete
     for i in range(0, lengthPowers):
-        processes[i].join()
+        processes[i].join() # Wait the process
 
 # This function will create a limited number of combinations
 def createCombination(powerPosition, listCombinations):
@@ -20,25 +21,27 @@ def createCombination(powerPosition, listCombinations):
     repeatOperation = False
     i = possibleCombinations*powerPosition
 
-    print("Process", powerPosition, "started")
-
+    # Generates a group of combinations
     while (i < possibleCombinations*(powerPosition + 1)):
         combination = ""
         solution = 1
         units = 1
 
+        # Generate a single combination
         for j in range(0, lengthConstants):
             constant = constants[0][j][0]
             power = powers[int((i/(pow(lengthPowers, lengthConstants - j)/lengthPowers))%lengthPowers)];
             solution *= constant**power
             units *= constants[0][j][1]**power
 
+            # Save the combination
             if (repeatOperation == True):
                 combination += str(constant) + "^" + str(power)
 
                 if (j < (lengthConstants - 1)):
                     combination += " * "
 
+        # This combination has to be saved
         if (units - constants[1][1] == 0):
             if (repeatOperation == True):
                 listCombinations.append([combination, solution])
@@ -48,5 +51,3 @@ def createCombination(powerPosition, listCombinations):
                 i -= 1
 
         i += 1
-
-    print("Process", powerPosition, "finished")
