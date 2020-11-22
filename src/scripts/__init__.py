@@ -4,3 +4,4 @@ import sympy as sym
 m, s, kg, C = sym.symbols("m, s, kg, C")
 
 from .Data import constants, powers
+from .Combinations import distributeCombinations, createCombination
