@@ -29,12 +29,13 @@ def main():
     if (properties.dontSave == False):
         saveCombinations(combinations, time)
 
-    if (len(combinations) != 0):
-        print("\nResults [combinations = solution | (solution - cosmological constant)]:")
-        for i in range(0, len(combinations)):
-            print(combinations[i][0], "=", combinations[i][1], "|", combinations[i][1] - constants[1][0])
-    else:
-        print("\nWithout results")
+    if (properties.hide == False):
+        if (len(combinations) != 0):
+            print("\nResults [combinations = solution | (solution - cosmological constant)]:")
+            for i in range(0, len(combinations)):
+                print(combinations[i][0], "=", combinations[i][1], "|", combinations[i][1] - constants[1][0])
+        else:
+            print("\nWithout results")
 
 # This function exports the output in a ".txt" file
 def saveCombinations(combinations, time):
