@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 from datetime import datetime
 import multiprocessing
 
@@ -13,9 +12,8 @@ def main():
     listCombinations = manager.list()
     combinations = []
     time = [datetime.now(), datetime.now()]
-    saveFile = True;
-
-    os.system("clear");
+    
+    properties = readArguments()
 
     time[0] = datetime.now()
     print("Start time:", time[0].strftime("%H:%M:%S"))
@@ -28,11 +26,7 @@ def main():
     print("Ending time:", datetime.now().strftime("%H:%M:%S"))
     print("Number of combinations:", len(combinations))
 
-    for arg in (sys.argv):
-        if (arg == "--dont-save"):
-            saveFile = False
-    
-    if (saveFile == True):
+    if (properties.dontSave == False):
         saveCombinations(combinations, time)
 
     if (len(combinations) != 0):
