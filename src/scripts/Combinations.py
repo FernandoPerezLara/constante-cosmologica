@@ -1,4 +1,5 @@
 import multiprocessing
+import decimal
 
 from .Data import *
 
@@ -29,10 +30,10 @@ def createCombination(powerPosition, listCombinations):
 
         # Generate a single combination
         for j in range(0, lengthConstants):
-            constant = constants[0][j][0]
-            power = powers[int((i/(pow(lengthPowers, lengthConstants - j)/lengthPowers))%lengthPowers)];
-            solution *= constant**power
-            units *= constants[0][j][1]**power
+            constant = decimal.Decimal(constants[0][j][0])
+            power = decimal.Decimal(powers[int((i/(pow(lengthPowers, lengthConstants - j)/lengthPowers))%lengthPowers)]);
+            solution *= decimal.Decimal(pow(constant, power))
+            units *= pow(constants[0][j][1], power)
 
             # Save the combination
             if (repeatOperation == True):
