@@ -18,18 +18,19 @@ def distributeCombinations(listCombinations):
 # This function will create a limited number of combinations
 def createCombination(powerPosition, listCombinations):
     possibleCombinations = pow(lengthPowers, lengthConstants)/lengthPowers
+    subgroup = possibleCombinations*(powerPosition + 1)
     repeatOperation = False
     i = possibleCombinations*powerPosition
 
     # Generates a group of combinations
-    while (i < possibleCombinations*(powerPosition + 1)):
+    while (i < subgroup):
         combination = ""
         solution = 1
         units = 1
 
         # Generate a single combination
         for j in range(0, lengthConstants):
-            power = powers[int((i/(pow(lengthPowers, lengthConstants - j)/lengthPowers))%lengthPowers)];
+            power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)];
             units *= pow(constants[0][j][1], power)
 
             # Save the combination
