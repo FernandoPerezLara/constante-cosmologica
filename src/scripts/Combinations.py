@@ -30,7 +30,7 @@ def createCombination(powerPosition, listCombinations):
 
         # Generate a single combination
         for j in range(0, lengthConstants):
-            power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)];
+            power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)]
             units *= pow(constants[0][j][1], power)
 
             # Save the combination

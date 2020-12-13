@@ -16,14 +16,14 @@ def main():
     properties = readArguments()
 
     time[0] = datetime.now()
-    print("Start time:", time[0].strftime("%H:%M:%S"))
+    print("Start time:", str(int(time[0].timestamp())))
 
     distributeCombinations(listCombinations)
     combinations = list(listCombinations)
     combinations.sort(key=lambda x: x[1] - constants[1][0])
 
     time[1] = datetime.now()
-    print("Ending time:", datetime.now().strftime("%H:%M:%S"))
+    print("Ending time:", str(int(time[1].timestamp())), "\n")
     print("Number of combinations:", len(combinations))
 
     if (properties.dontSave == False):
@@ -46,8 +46,8 @@ def saveCombinations(combinations, time):
 
     file = open(dir_path + "/" + str(int(time[1].timestamp())) + ".txt", "w")
     
-    file.write("Start time: " + time[0].strftime("%H:%M:%S") + "\n")
-    file.write("Ending time: " + time[1].strftime("%H:%M:%S") + "\n")
+    file.write("Start time: " + str(int(time[0].timestamp())) + "\n")
+    file.write("Ending time: " + str(int(time[1].timestamp())) + "\n")
 
     file.write("\nCosmological constant: " + str(constants[1][0]) + " " + str(constants[1][1]) + "\n");
 
