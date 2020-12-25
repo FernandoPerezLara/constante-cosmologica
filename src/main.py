@@ -15,8 +15,12 @@ def main():
     
     properties = readArguments()
 
+    if (properties.parameters == True):
+        print("Number of constants:", lengthConstants)
+        print("Number of powers:", lengthPowers)
+
     time[0] = datetime.now()
-    print("Start time:", str(int(time[0].timestamp())))
+    print("\nStart time:", str(int(time[0].timestamp())))
 
     distributeCombinations(listCombinations)
     combinations = list(listCombinations)
