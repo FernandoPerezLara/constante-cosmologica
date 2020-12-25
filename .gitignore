@@ -1,3 +1,6 @@
+# Program
+data/
+
 # Byte-compiled / Optimized / DLL files
 __pycache__/
 *.py[cod]
