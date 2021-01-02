@@ -20,6 +20,7 @@ def createCombination(powerPosition, listCombinations):
     possibleCombinations = pow(lengthPowers, lengthConstants)/lengthPowers
     subgroup = possibleCombinations*(powerPosition + 1)
     repeatOperation = False
+    ignoreSolution = False
     i = possibleCombinations*powerPosition
 
     # Generates a group of combinations
@@ -36,8 +37,14 @@ def createCombination(powerPosition, listCombinations):
             # Save the combination
             if (repeatOperation == True):
                 constant = constants[0][j][0]
-                solution *= pow(constant, power)
                 combination += str(constant) + "^" + str(power)
+
+                if (ignoreSolution == False):
+                    try:
+                        solution *= pow(constant, power)
+                    except OverflowError:
+                        solution = 0
+                        ignoreSolution = True
 
                 if (j < (lengthConstants - 1)):
                     combination += " * "
@@ -47,6 +54,7 @@ def createCombination(powerPosition, listCombinations):
             if (repeatOperation == True):
                 listCombinations.append([combination, solution])
                 repeatOperation = False
+                ignoreSolution = False
             else:
                 repeatOperation = True;
                 i -= 1
