@@ -32,7 +32,7 @@ def createCombination(powerPosition, listCombinations):
         # Generate a single combination
         for j in range(0, lengthConstants):
             power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)]
-            units *= pow(constants[0][j][1], power)
+            units *= constants[0][j][1]**power
 
             # Save the combination
             if (repeatOperation == True):
@@ -50,7 +50,7 @@ def createCombination(powerPosition, listCombinations):
                     combination += " * "
 
         # This combination has to be saved
-        if (units - constants[1][1] == 0):
+        if (units.compare(constants[1][1]) == 0):
             if (repeatOperation == True):
                 listCombinations.append([combination, solution])
                 repeatOperation = False
