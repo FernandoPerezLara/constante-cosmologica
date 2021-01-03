@@ -24,7 +24,7 @@ def main():
 
     distributeCombinations(listCombinations)
     combinations = list(listCombinations)
-    combinations.sort(key=lambda x: x[1] - constants[1][0])
+    combinations.sort(key=lambda x: x[1])
 
     time[1] = datetime.now()
     print("Ending time:", str(int(time[1].timestamp())), "\n")
@@ -35,9 +35,9 @@ def main():
 
     if (properties.hide == False):
         if (len(combinations) != 0):
-            print("\nResults [combinations = solution | (solution - cosmological constant)]:")
+            print("\nResults [combinations = solution]:")
             for i in range(0, len(combinations)):
-                print(combinations[i][0], "=", combinations[i][1], "|", combinations[i][1] - constants[1][0])
+                print(combinations[i][0], "=", combinations[i][1])
         else:
             print("\nWithout results")
 
@@ -67,9 +67,9 @@ def saveCombinations(combinations, time):
     file.write("\nNumber of combinations: " + str(len(combinations)) + "\n")
 
     if (len(combinations) != 0):
-        file.write("\nResults [combinations = solution | (solution - cosmological constant)]:\n")
+        file.write("\nResults [combinations = solution]: \n")
         for i in range(0, len(combinations)):
-            file.write("\t" + str(combinations[i][0]) + " = " + str(combinations[i][1]) + " | " + str(combinations[i][1] - constants[1][0]) + "\n")
+            file.write("\t" + str(combinations[i][0]) + " = " + str(combinations[i][1]) + "\n")
     else:
         file.write("\nWithout results")
 
