@@ -1,4 +1,5 @@
 import multiprocessing
+import sympy as sym
 
 from .Data import *
 
@@ -17,11 +18,14 @@ def distributeCombinations(listCombinations):
 
 # This function will create a limited number of combinations
 def createCombination(powerPosition, listCombinations):
-    possibleCombinations = pow(lengthPowers, lengthConstants)/lengthPowers
+    possibleCombinations = (lengthPowers**lengthConstants)/lengthPowers
     subgroup = possibleCombinations*(powerPosition + 1)
     repeatOperation = False
     ignoreSolution = False
     i = possibleCombinations*powerPosition
+
+    # Made to remove the square roots of the powers
+    constants[1][1] = constants[1][1]**2
 
     # Generates a group of combinations
     while (i < subgroup):
@@ -31,7 +35,7 @@ def createCombination(powerPosition, listCombinations):
 
         # Generate a single combination
         for j in range(0, lengthConstants):
-            power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)]
+            power = sym.Rational(powers[int(i*(lengthPowers**(1 - lengthConstants + j)) % lengthPowers)])
             units *= constants[0][j][1]**power
 
             # Save the combination
@@ -41,7 +45,7 @@ def createCombination(powerPosition, listCombinations):
 
                 if (ignoreSolution == False):
                     try:
-                        solution *= pow(constant, power)
+                        solution *= constant**power
                     except OverflowError:
                         solution = 0
                         ignoreSolution = True
@@ -49,8 +53,8 @@ def createCombination(powerPosition, listCombinations):
                 if (j < (lengthConstants - 1)):
                     combination += " * "
 
-        # This combination has to be saved
-        if (units.compare(constants[1][1]) == 0):
+        # This combination has to be saved. Squared to remove the roots
+        if ((units**2).equals(constants[1][1]) == 1):
             if (repeatOperation == True):
                 listCombinations.append([combination, solution])
                 repeatOperation = False
