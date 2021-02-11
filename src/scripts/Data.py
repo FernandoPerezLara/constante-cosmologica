@@ -1,3 +1,4 @@
+import copy
 from scripts import m, s, kg, C
 
 # Constants
@@ -22,3 +23,7 @@ powers = [-10, -9, -8, -7, -6.5, -6, -5.5, -5, -4.5, -4, -3.5, -3, -2.5, -2, -1.
 # Length
 lengthConstants = len(constants[0])
 lengthPowers = len(powers)
+
+# Processed data
+temp_constants = copy.deepcopy(constants)
+temp_powers = copy.deepcopy(powers)
