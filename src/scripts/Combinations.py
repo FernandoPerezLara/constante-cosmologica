@@ -1,10 +1,13 @@
 import multiprocessing
+import sympy as sym
 
 from .Data import *
 
 # This function will divide the combinations between a number of processes
 def distributeCombinations(listCombinations):
     processes = [None]*lengthPowers
+
+    removeRoots(2)
 
     # Create the processes required to create the joins
     for i in range(0, lengthPowers):
@@ -17,7 +20,7 @@ def distributeCombinations(listCombinations):
 
 # This function will create a limited number of combinations
 def createCombination(powerPosition, listCombinations):
-    possibleCombinations = pow(lengthPowers, lengthConstants)/lengthPowers
+    possibleCombinations = (lengthPowers**lengthConstants)/lengthPowers
     subgroup = possibleCombinations*(powerPosition + 1)
     repeatOperation = False
     ignoreSolution = False
@@ -31,17 +34,18 @@ def createCombination(powerPosition, listCombinations):
 
         # Generate a single combination
         for j in range(0, lengthConstants):
-            power = powers[int(i*pow(lengthPowers, 1 - lengthConstants + j) % lengthPowers)]
-            units *= pow(constants[0][j][1], power)
+            index = int(i*(lengthPowers**(1 - lengthConstants + j)) % lengthPowers)
+            power = temp_powers[index]
+            units *= temp_constants[0][j][1]**power
 
             # Save the combination
             if (repeatOperation == True):
                 constant = constants[0][j][0]
-                combination += str(constant) + "^" + str(power)
+                combination += str(constant) + "^" + str(powers[index])
 
                 if (ignoreSolution == False):
                     try:
-                        solution *= pow(constant, power)
+                        solution *= constant**powers[index]
                     except OverflowError:
                         solution = 0
                         ignoreSolution = True
@@ -49,14 +53,21 @@ def createCombination(powerPosition, listCombinations):
                 if (j < (lengthConstants - 1)):
                     combination += " * "
 
-        # This combination has to be saved
-        if (units - constants[1][1] == 0):
+        # This combination has to be saved. Squared to remove the roots
+        if (units.compare(temp_constants[1][1]) == 0):
             if (repeatOperation == True):
                 listCombinations.append([combination, solution])
                 repeatOperation = False
                 ignoreSolution = False
             else:
-                repeatOperation = True;
+                repeatOperation = True
                 i -= 1
 
         i += 1
+
+# This function removes the square roots of the powers
+def removeRoots(root):
+    temp_constants[1][1] = temp_constants[1][1]**root
+
+    for i in range(0, lengthPowers):
+        temp_powers[i] = sym.Rational(temp_powers[i])*root
