@@ -1,5 +1,23 @@
 # 🌌 Cosmological constant
 
+<p align="center">
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant" alt="Github downloads">
+        <img src="https://img.shields.io/github/downloads/FernandoPerezLara/cosmological-constant/total?logo=github&style=flat-square" />
+    </a>
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/issues" alt="Github open issues">
+        <img src="https://img.shields.io/github/issues-raw/FernandoPerezLara/cosmological-constant?logo=github&style=flat-square" />
+    </a>
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/issues" alt="Github clossed issues">
+        <img src="https://img.shields.io/github/issues-closed-raw/FernandoPerezLara/cosmological-constant?logo=github&style=flat-square" />
+    </a>
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/releases" alt="Github releases">
+        <img src="https://img.shields.io/github/v/release/FernandoPerezLara/cosmological-constant?logo=github&style=flat-square" />
+    </a>
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/commits" alt="Github commit activity">
+        <img src="https://img.shields.io/github/commit-activity/y/FernandoPerezLara/cosmological-constant?logo=github&style=flat-square" />
+    </a>
+</p>
+
 The main purpose of this project is to find where the cosmological constant comes from.
 
 This program aims to show you that the cosmological constant comes from other universal constants by mixing all kinds of combinations between them.
@@ -44,3 +62,17 @@ Execution command example:
 ```
 python src/main.py --hide --parameters
 ```
+
+## How does it work?
+As previously said, this program will create all the possible combinations to find those units that are the same as those from the cosmological constant.
+
+These combinations are made up of powers that act as powers, roots and divisions.
+
+The number of combinations will be equal to the number of powers that we want to raise raised to the number of constants with which we want to work.
+<p align="center">
+    <img src="https://render.githubusercontent.com/render/math?math=N_{Combinations}={L_{Powers}}^{L_{Constants}}">
+</p>
+
+To optimize processing time, these combinations are performed simultaneously based on the number of constants we use. We use multiprocessing to perform these operations, if we have 8 combinations, the program will be executed in 8 cores.
+
+To see if a combination is among the possible ones, the resulting units are compared and stored.
