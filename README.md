@@ -1,4 +1,25 @@
-# 🌌 Cosmological constant
+<br />
+<p align="center">
+  <a href="https://github.com/FernandoPerezLara/cosmological-constant/">
+    <img src="https://i.imgur.com/Y7hhM9l.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Cosmological Constant</h3>
+
+  <p align="center">
+    Heuristic determination of the cosmological constant
+    <br />
+    <a href="https://www.worldscientific.com/doi/abs/10.1142/S0217732321501145"><strong>Read more about the study »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/">View Code</a>
+    ·
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/FernandoPerezLara/cosmological-constant/discussions">Start a discussion</a>
+  </p>
+</p>
+<br />
 
 <p align="center">
     <a href="https://github.com/FernandoPerezLara/cosmological-constant" alt="Github downloads">
@@ -76,3 +97,18 @@ The number of combinations will be equal to the number of powers that we want to
 To optimize processing time, these combinations are performed simultaneously based on the number of constants we use. We use multiprocessing to perform these operations, if we have 8 combinations, the program will be executed in 8 cores.
 
 To see if a combination is among the possible ones, the resulting units are compared and stored.
+
+## Contributors
+This work has been possible thanks to:
+- [Manuel Ureña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for having the idea and for having trusted it.
+- [Fernando Pérez Lara](https://www.linkedin.com/in/fernandoperezlara/) ([**@FernandoPerezLara**](https://github.com/FernandoPerezLara)) for having developed the necessary software to make this idea come true.
+
+## Acknowledgments
+I would like to thank [Manuel Ureña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for giving me the pleasure of working with him on this magnificent project. It has been a pleasure to have worked side by side with this person, I have learned a lot and I have had a great time.
+
+I hope you continue to grow as a person in this wonderful world in which we live. ♥
+
+## License
+Copyright (c) 2021 Fernando Pérez Lara.
+
+Licensed and distributed under the [MIT](LICENSE.txt) license.
