@@ -100,11 +100,11 @@ To see if a combination is among the possible ones, the resulting units are comp
 
 ## Contributors
 This work has been possible thanks to:
-- [Manuel Ureña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for having the idea and for having trusted it.
+- [Manuel Urueña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for having the idea and for having trusted it.
 - [Fernando Pérez Lara](https://www.linkedin.com/in/fernandoperezlara/) ([**@FernandoPerezLara**](https://github.com/FernandoPerezLara)) for having developed the necessary software to make this idea come true.
 
 ## Acknowledgments
-I would like to thank [Manuel Ureña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for giving me the pleasure of working with him on this magnificent project. It has been a pleasure to have worked side by side with this person, I have learned a lot and I have had a great time.
+I would like to thank [Manuel Urueña Palomo](https://www.linkedin.com/in/manuel-urue%C3%B1a-palomo/) for giving me the pleasure of working with him on this magnificent project. It has been a pleasure to have worked side by side with this person, I have learned a lot and I have had a great time.
 
 I hope you continue to grow as a person in this wonderful world in which we live. ♥
 
